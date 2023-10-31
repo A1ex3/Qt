@@ -17,6 +17,38 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    int result = ui->lineEdit->text().toInt()+ui->lineEdit_2->text().toInt();
-    ui->label->setText(QString::number(result));
+    int a = ui->lineEdit->text().toInt();
+    int b = ui->lineEdit_2->text().toInt();
+
+    QStringList list = {"+","-","*","/"};
+    ui->comboBox->addItems(list);
+
+   for(int i=0;i<=list.length();i++)
+   {
+       if (list[i] == "+")
+       {
+            ui->label->setText(QString::number(a+b));
+            break;
+       }
+       else if(list[i] == "-")
+       {
+           ui->label->setText(QString::number(a-b));
+           break;
+       }
+       else if(list[i] == "*")
+       {
+           ui->label->setText(QString::number(a*b));
+           break;
+       }
+       else if(list[i] == "/")
+       {
+           ui->label->setText(QString::number(a/b));
+           break;
+       }
+       else
+       {
+           ui->label->setText(QString::number(0));
+       }
+   }
+
 }
